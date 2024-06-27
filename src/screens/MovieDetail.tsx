@@ -1,23 +1,23 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
+import { API_URL, API_ACCESS_TOKEN } from '@env' // Ditambahkan
 
 const MovieDetail = ({ navigation }: any): any => {
   const fetchData = (): void => {
-    const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOTc2Y2M5NWI2OWI5Y2YyYzJhMTk4OTc2MjRhODhkYSIsIm5iZiI6MTcxOTQ2Mzk5OS4wOTU5MzIsInN1YiI6IjY2N2M1MWJkYWFjNGMzZDllN2Y5YmRlMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.r-s7HI6l3fruX6_nYjy_ZRmj83SfTlpAJq3IyQzw2hU'
-
-    const url =
-      'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1'
+    if (API_URL == null || API_ACCESS_TOKEN.length == null) {
+      throw new Error('ENV not found')
+    }
 
     const options = {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
+        Authorization: `Bearer ${API_ACCESS_TOKEN}`,
       },
     }
 
-    fetch(url, options)
-      .then(async (response) => await response.json())
+    fetch(API_URL, options)
+      .then((response) => response.json())
       .then((response) => {
         console.log(response)
       })
