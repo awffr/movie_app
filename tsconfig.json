@@ -14,6 +14,7 @@
     "noEmit": true,
     "strictNullChecks": true,
     "baseUrl": ".",
+    "typeRoots": ["./src/types"], // Ditambahkan
     "paths": {
       "*": ["node_modules/*", "src/types/*"]
     }
