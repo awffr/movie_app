@@ -1,19 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Button } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-export default function Home(): JSX.Element {
-  return (
-    <View style={styles.container}>
-      <Text>Home</Text>
-    </View>
-  );
-}
+type HomeProps = {
+  navigation: StackNavigationProp<any>; 
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+const Home = ({ navigation }: HomeProps): JSX.Element => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Home Screen</Text>
+    <Button
+      title="Go to Movie Detail"
+      onPress={() => navigation.navigate('MovieDetail')}
+    />
+  </View>
+);
+
+export default Home;
