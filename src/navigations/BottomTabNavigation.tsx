@@ -8,7 +8,16 @@ import Favorite from '../screens/Favorite';
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = (): JSX.Element => (
-  <Tab.Navigator>
+  <Tab.Navigator
+    screenOptions={{
+      tabBarActiveTintColor: '#D32F2F', 
+      tabBarInactiveTintColor: 'gray', 
+      tabBarStyle: {
+        backgroundColor: 'white', 
+      },
+      headerShown: false, 
+    }}
+  >
     <Tab.Screen
       name="HomeTab"
       component={HomeStackNavigation}
@@ -16,7 +25,6 @@ const BottomTabNavigator = (): JSX.Element => (
         tabBarIcon: ({ color }: { color: string }) => (
           <Feather name="home" size={28} color={color} />
         ),
-        headerShown: false,
       }}
     />
     <Tab.Screen
@@ -26,7 +34,6 @@ const BottomTabNavigator = (): JSX.Element => (
         tabBarIcon: ({ color }: { color: string }) => (
           <Feather name="search" size={28} color={color} />
         ),
-        headerShown: false,
       }}
     />
     <Tab.Screen
@@ -36,7 +43,6 @@ const BottomTabNavigator = (): JSX.Element => (
         tabBarIcon: ({ color }: { color: string }) => (
           <Feather name="heart" size={28} color={color} />
         ),
-        headerShown: false,
       }}
     />
   </Tab.Navigator>
